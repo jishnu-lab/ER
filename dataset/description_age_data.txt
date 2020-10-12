@@ -1,0 +1,12 @@
+
+Valid datasets:
+
+dataset 			   n    p
+
+formated2_IgG_NLSrenalyzed.txt    66    5
+formatted_BTMs.txt                67  346
+formatted_MetaboClustersNeg.txt   67   38
+formatted_MetaboClustersPos.txt   67   18
+reformatted4_Flow.txt             57   24
+
+
