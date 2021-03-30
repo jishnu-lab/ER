@@ -43,14 +43,32 @@ lbd = 0.5
 res <- ER(Y, X, delta = delta, pred = F, beta_est = "LS", rep_CV = 50, verbose = T,
           merge = F, CI = T, correction = NULL, lbd = lbd)
 res$K
+### extract estimated beta, CIs and p-vals
+
+# extract beta_hat and its standardized version
+est_beta_LS <- res$beta
+est_beta_LS_scaled <- diag(sqrt(diag(res$C))) %*% est_beta_LS
+# return the ordered ranking based on the absolute values
+order_coef_beta_LS <- order(abs(est_beta_LS_scaled), decreasing = T)
+# 45  1 19 41  2 49 46 15  7 24 44 17 42  5 53  9 52 36
+
 round(res$beta_CIs, 3)
 p_vals <- 2 * pnorm(abs(res$beta / sqrt(res$beta_var / length(Y))), lower.tail = F)
+
 
 
 res_dz <- ER(Y, X, delta = delta, pred = F, beta_est = "Dantzig", rep_CV = 50, verbose = T,
           merge = F, CI = T, correction = NULL, lbd = lbd)
 round(res_dz$beta, 3)
 Z_ind <- which(res_dz$beta != 0)
+
+# extract beta_hat and its standardized version
+est_beta_DZ <- res_dz$beta
+est_beta_DZ_scaled <- diag(sqrt(diag(res_dz$C))) %*% est_beta_DZ
+# return the ordered ranking based on the absolute values
+order_coef_beta_DZ <- order(abs(est_beta_DZ_scaled), decreasing = T)
+
+
 # 
 # clusters <- recoverGroup(res$A)
 # 
@@ -96,8 +114,6 @@ cat("ER-Lasso selects", length(coef_ind), "features while Lasso selects",
 # write("\n", file = file_name, append = T)
 # write(feature_names[Lasso_coef_ind], file = file_name, append = T)
 
-
-
 ######  2D Projection of X
 
 Y <- data$age
@@ -121,6 +137,7 @@ Plot_2D(Y_label, Z_Lasso, c("Elderly", "Adults"))
 # write.csv(Z_tilde, file = "../output/age_dataset/Z_mat.csv", row.names = F)
 # write.csv(A_hat, file = "../output/age_dataset/A_mat.csv", row.names = F)
 # write.csv(cbind(Y, X), file = "../output/age_dataset/data_mat.csv", row.names = F)
+# write.csv(X[,coef_ind], file = "../output/age_dataset/X_CR.csv", row.names = F)
 
 
 ################################################################################
