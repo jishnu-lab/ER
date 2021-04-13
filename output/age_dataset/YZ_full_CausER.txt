@@ -3,15 +3,13 @@ Y,V1,V2,V5,V7,V9,V15,V17,V19,V24,V36,V41,V42,V44,V45,V46,V49,V52,V53
 
 Graph Edges:
 1. V1 o-> Y
-2. V17 o-o V15
-3. V17 o-> V9
-4. V19 --> V41
-5. V24 o-> V9
-6. V45 o-> Y
-7. V46 o-o V45
-8. V53 o-o V36
-9. Y --> V19
+2. V17 o-o V9
+3. V19 --> V41
+4. V45 o-> Y
+5. V46 o-o V45
+6. V53 o-o V36
+7. Y --> V19
 
-Algorithm: 
-Type: 
+Algorithm: FCI-Max: alpha = 0.1
+Type: partial ancestral graph
 
