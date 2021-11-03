@@ -1,0 +1,12 @@
+Graph Nodes:
+Y,Z1,Z2,Z3,Z4,Z5,Z6,Z7,Z8
+
+Graph Edges:
+1. Y o-o Z7
+2. Z1 o-o Z3
+3. Z4 o-> Z2
+4. Z5 o-> Z2
+
+Algorithm: FCI-Max: alpha = 0.1
+Type: partial ancestral graph
+
