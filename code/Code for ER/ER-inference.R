@@ -46,29 +46,6 @@ Est_beta <- function(Y, X, A_hat, C_hat, Gamma_hat, I_hat, I_ind_hat, CI = T,
 
 
 
-# Comp_ASV <- function(sigma2_hat, BI, R, Gamma_hat, beta_hat, Omega_hat, I_hat, I_ind_hat) {
-#   D_tau_bar <- t(BI) %*% diag(Gamma_hat[I_hat]) %*% BI
-#   V1 <- as.numeric(sigma2_hat + t(beta_hat) %*% D_tau_bar %*% beta_hat)
-#   Q <- t(solve(crossprod(R), t(R)))
-#   V2 <- Omega_hat + t(Q) %*% diag(Gamma_hat) %*% Q
-# 
-#   K_hat <- length(I_ind_hat)
-#   D <- c()
-# 
-#   for (a in 1:K_hat) {
-#     group_a <- unlist(I_ind_hat[[a]])
-#     m_a <- length(group_a)
-#     D1 <- (2 * m_a - 1) * D_tau_bar[a,a]
-#     D2 <- beta_hat[a] ** 2 / (m_a - 1) ** 2
-#     for (j in group_a)
-#       D <- c(D, D2 * Gamma_hat[j] * (D1 - Gamma_hat[j]))
-#   }
-# 
-#   V3 <- t(Q[I_hat,]) %*% diag(D) %*% Q[I_hat,]
-#   return(diag(V1 * V2 + V3))
-# }
-
-
 Est_sigma2 <- function(Y, h, beta_est, C_hat) {
   n <- length(Y)
   sigma2_hat <- crossprod(Y) / n - 2 * t(beta_est) %*% h + t(beta_est) %*% C_hat %*% beta_est
