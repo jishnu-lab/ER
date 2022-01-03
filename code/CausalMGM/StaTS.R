@@ -48,7 +48,7 @@ StaTS <- function(data, target, alphas=c(0.01, 0.05, 0.1, 0.15, 0.2, 0.25), lamb
         }
 
         for (a in 1:length(alphas)) {
-            graph <- fciMax(data[sub,], initialGraph=ig, alpha=alphas[a])
+            graph <- fciMax(data[sub,], initialGraph=ig, alpha=alphas[a], fdr=F)
             ## print(graph$markov.blankets[[target]])
             ## for (i in 1:ncol(data)) {
             i <- which(colnames(data) %in% target)
