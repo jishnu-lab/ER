@@ -38,7 +38,7 @@ print(stats.select)
 ## [1] 0.00000000 0.01611111 0.08888889 0.18583333 0.19500000 0.19500000
 
 
-g <- fciMax(YZ, alpha=stats.select$alpha.hat, verbose=T)
+g <- fciMax(YZ, alpha=stats.select$alpha.hat, fdr=F, verbose=T)
 g$edges
 
 print(g)
