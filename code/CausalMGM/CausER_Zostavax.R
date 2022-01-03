@@ -49,7 +49,7 @@ print(stats.select)
 print(ig)
 saveGraph(ig, '../../output/age_dataset/YZ_full_glasso.txt')
 
-g <- fciMax(YZ, initialGraph=ig, alpha=stats.select$alpha.hat, verbose=T)
+g <- fciMax(YZ, initialGraph=ig, alpha=stats.select$alpha.hat, fdr=F, verbose=T)
 
 print(g)
 print(g$edges)
@@ -96,7 +96,7 @@ ig <- adjMat2Graph(final.glasso$icov[[1]], colnames(YZsig))
 print(ig)
 saveGraph(ig, '../../output/age_dataset/YZsig_full_glasso.txt')
 
-g <- fciMax(YZsig, initialGraph=ig, alpha=0.1, verbose=T)
+g <- fciMax(YZsig, initialGraph=ig, alpha=0.1, fdr=F, verbose=T)
 
 print(g)
 print(g$edges)
